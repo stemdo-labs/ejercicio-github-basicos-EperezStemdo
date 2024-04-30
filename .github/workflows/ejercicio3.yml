@@ -1,9 +1,11 @@
 # .github/workflows/issue-on-push.yml
-name: Crear issue al abrir PR
-on:
-  pull_request:
-    branches: 
-      - '*'
+#name: Crear issue al abrir PR
+#on:
+#  pull_request:
+#    branches: 
+#      - '*'
+on: [push]
+name: Create an issue on push
 permissions:
   contents: read
   issues: write 
