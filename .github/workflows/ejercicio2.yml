@@ -1,0 +1,33 @@
+name: Simular CI/CD build, test y push
+on:
+  push:
+    branches: 
+      - '*'
+      
+jobs:
+  build: # El nombre del job 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Compile #nombre del step
+        run: |
+          echo "Haciendo Build"
+
+  test: # El nombre del job 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Testing
+        run: |
+          echo "Haciendo testing"
+          
+  push: # El nombre del job 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deployment
+        run: |
+          echo "Haciendo push"
+
+
+          
+
+  
+         
