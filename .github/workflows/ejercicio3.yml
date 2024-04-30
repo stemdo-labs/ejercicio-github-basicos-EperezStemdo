@@ -1,0 +1,18 @@
+name: Issue al abrir una pull request
+on:
+  pull_request:
+    types: 
+      - opened
+      - reopened
+
+jobs:
+  issue:
+    permissions:
+      issues: write
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: gh issue create --title "I found a bug" --body "Nothing works"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
