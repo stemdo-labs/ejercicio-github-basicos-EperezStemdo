@@ -1,0 +1,18 @@
+# .github/workflows/issue-on-push.yml
+name: Crear issue al abrir PR
+on:
+  pull_request:
+    branches: 
+      - '*'
+permissions:
+  contents: read
+  issues: write 
+  
+jobs:
+  issue:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: JasonEtco/create-an-issue@v2 #acción create-an-issue
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
