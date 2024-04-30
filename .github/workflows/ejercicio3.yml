@@ -20,15 +20,17 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
-      - run: | 
-          pull_request_url="${{ github.event.pull_request.html_url }}"
-          issue_body="This issue is related to pull request: [${pull_request_url}](${pull_request_url})"
-          gh issue create --title "I found a bug" --body "${issue_body}" -a "EperezStemdo"
+      - name: Añadir closes a la pr
+        run: |
+          pr_number="${{ github.event.pull_request.number }}"
+          issue_number=$(echo "${pr_body}" | grep -oE '#[0-9]+' | head -n1)
+          new_pr_body="Closes ${issue_number}\n\n${pr_body}"
+          gh pr edit "${pr_number}"  --body "${new_pr_body}"
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}    
           
       - name: Cerrar issue cuando se cierra la pull request
-        if: ${{ github.event.pull_request.merged == true || github.event.pull_request.closed_at != null }}
+        if: github.event.pull_request.merged == true || github.event.pull_request.closed_at != null
         #github.event.pull_request.closed_at != null es una condición que verifica si el campo closed_at en el JSON del evento de la solicitud de extracción tiene un valor diferente de null. Este campo contiene la fecha y hora en que se cerró la solicitud de extracción.
         run: |
           issue_number=$(echo '${{ github.event.pull_request.number }}')
