@@ -13,4 +13,4 @@ jobs:
       - uses: actions/checkout@v4
       - name: runer info
         run: |
-          echo "Runner used is: ${{ RUNNER_OS }}"
+          echo "Runner used is: ${{ runner_os }}"
