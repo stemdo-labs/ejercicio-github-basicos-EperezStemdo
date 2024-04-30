@@ -1,0 +1,16 @@
+name: First workflow
+on:
+  push:
+    branches:
+      - main
+      
+jobs:
+  build:
+    name: Runner and branch info
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      - name: runer info
+        run: |
+          echo "Runner used is: ${{ RUNNER_OS }}"
