@@ -1,4 +1,5 @@
 ---
-title: Título de la Issue
-assignees: eperez
+title: Someone just pushed
+assignees: JasonEtco, matchai
+labels: bug, enhancement
 ---
