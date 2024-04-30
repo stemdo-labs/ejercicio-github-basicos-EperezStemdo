@@ -22,10 +22,7 @@ jobs:
           
       - name: Añadir closes a la pr
         run: |
-          pr_number="${{ github.event.pull_request.number }}"
-          issue_number=$(echo "${pr_body}" | grep -oE '#[0-9]+' | head -n1)
-          new_pr_body="Closes #${issue_number}"
-          gh pr edit "${pr_number}"  --body "${new_pr_body}"
+          gh pr edit ${{ github.event.number }} --body "Close #${{ env.issue_id }}"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}    
           
