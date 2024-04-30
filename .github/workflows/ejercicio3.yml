@@ -28,7 +28,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
           
       - name: Cerrar issue cuando se cierra la pull request
-        if: github.event.pull_request.merged == true || github.event.pull_request.closed_at != null
+        if: ${{ github.event.pull_request.merged == true || github.event.pull_request.closed_at != null }}
         #github.event.pull_request.closed_at != null es una condición que verifica si el campo closed_at en el JSON del evento de la solicitud de extracción tiene un valor diferente de null. Este campo contiene la fecha y hora en que se cerró la solicitud de extracción.
         run: |
           issue_number=$(echo '${{ github.event.pull_request.number }}')
