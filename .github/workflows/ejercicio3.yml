@@ -18,3 +18,4 @@ jobs:
       - uses: JasonEtco/create-an-issue@v2 #acción create-an-issue
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ADJETIVE: great
