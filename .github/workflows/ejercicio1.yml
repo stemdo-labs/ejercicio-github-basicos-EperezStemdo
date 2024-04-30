@@ -11,6 +11,9 @@ jobs:
     
     steps:
       - uses: actions/checkout@v4
-      - name: runer info
+      - name: runner info
         run: |
-          echo "Runner used is: ${{ runner.os }}"
+          echo "Sistema operativo del runner: ${{ runner.os }}"
+          echo "Nombre del runner:  ${{ runner.name }}
+          echo "Rama actual: ${{ github.ref }}"
+
