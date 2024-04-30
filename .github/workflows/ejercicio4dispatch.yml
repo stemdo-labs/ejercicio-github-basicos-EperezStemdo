@@ -9,10 +9,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-   
-  call-reusable-workflow:
-    uses: ./.github/workflows/ejercicio4.yml
-    with:
-      valor1: 1
-      valor2: 2
-      operacion: +
+
+  llamar_calculadora:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Llamar a la calculadora
+        uses: ./.github/workflows/ejercicio4.yml
+        with:
+          valor1: 1
+          valor2: 2
+          operacion: '+'
