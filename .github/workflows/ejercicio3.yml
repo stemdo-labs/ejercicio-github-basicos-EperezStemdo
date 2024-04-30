@@ -13,6 +13,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: gh issue create --title "I found a bug" --body "Nothing works"
+      - run: | 
+          pull_request_url="${{ github.event.pull_request.html_url }}"
+          issue_body="This issue is related to pull request: [${pull_request_url}](${pull_request_url})"
+          gh issue create --title "I found a bug" --body "Nothing works" -a "@me"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
