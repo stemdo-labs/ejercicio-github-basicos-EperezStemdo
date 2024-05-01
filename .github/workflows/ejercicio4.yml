@@ -36,8 +36,11 @@ jobs:
           fi
           
           echo $resultado
+          echo "::set-output name=resultado::$resultado"
             
-
+      - name: Mostrar resultado
+        run: |
+          echo "${{ steps.calculo.outputs.resultado }}"
     
     
     
