@@ -1,0 +1,22 @@
+name: Iniciar Sesión en Azure
+
+on:
+  workflow_dispatch:
+
+jobs:
+  login_to_azure:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Azure CLI
+        uses: azure/login@v1 #Acción para autenticarse en Azure
+      
+      - name: Iniciar Sesión en Azure
+        run: az login #incia se sión utilizando los secretos de GitHub
+        env:
+        #configurar secretos en el repositorio
+          AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+          AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+
+      - name: Verificar Sesión
+        run: az account show #Verificar que la sesión se ha iniciado
