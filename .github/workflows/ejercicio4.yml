@@ -18,7 +18,6 @@ jobs:
     steps:
       - name: Operaciones
         run: |
-          resultado=0
           
           if [[ "$inputs.operacion" == '+' ]]; then
             resultado=$((inputs.valor1 + inputs.valor2))
