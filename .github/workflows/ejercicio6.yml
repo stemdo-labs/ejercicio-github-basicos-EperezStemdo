@@ -1,10 +1,11 @@
-name: Crear calculadora
+name: Publish to Docker
 on:
-  workflow_call:
-    inputs: 
-      valor1:
-        required: true
-        type: number
+  push:
+    branches:
+      - '*'
+permissions:
+  packages: write
+  contents: read
 
 jobs:
    publish:
