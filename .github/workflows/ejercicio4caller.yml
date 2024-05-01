@@ -6,11 +6,8 @@ on:
       - '*'
 
 jobs:
-
-  call_workflow_calculadora:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+  call_ejercicio4:
+   
       
       - name: Llamar a la calculadora
         uses: ./.github/workflows/ejercicio4.yml
