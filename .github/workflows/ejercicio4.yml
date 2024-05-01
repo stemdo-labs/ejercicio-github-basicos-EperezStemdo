@@ -20,19 +20,19 @@ jobs:
         run: |
           
           if [[ "$inputs.operacion" == '+' ]]; then
-            resultado=$((inputs.valor1 + inputs.valor2))
+            resultado=$((inputs.valor1+inputs.valor2))
           fi
           
           if [[ "$inputs.operacion" == "-" ]]; then
-            resultado=$((inputs.valor1 - inputs.valor2))
+            resultado=$((inputs.valor1-inputs.valor2))
           fi
           
           if [[ "$github.event.inputs.operacion" == "/" ]]; then
-            resultado=$((github.event.inputs.valor1 / github.event.inputs.valor2))
+            resultado=$((github.event.inputs.valor1/github.event.inputs.valor2))
           fi
           
           if [[ "$github.event.inputs.operacion" == "*" ]]; then
-            resultado=$((github.event.inputs.valor1 * github.event.inputs.valor2))
+            resultado=$((github.event.inputs.valor1*github.event.inputs.valor2))
           fi
           
           echo $resultado
