@@ -22,6 +22,7 @@ jobs:
           
           if [[ "$inputs.operacion" == '+' ]]; then
             resultado=$((inputs.valor1 + inputs.valor2))
+            resultado=${{ inputs.valor1 + inputs.valor2 }} 
           fi
           
           if [[ "$inputs.operacion" == "-" ]]; then
