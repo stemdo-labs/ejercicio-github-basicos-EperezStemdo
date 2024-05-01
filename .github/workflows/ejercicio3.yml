@@ -19,10 +19,14 @@ jobs:
           gh issue create --title "I found a bug" --body "${issue_body}" -a "EperezStemdo"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
+
+      - name: Get PR metadata
+        id: pr_meta
+        uses: fregante/pull-request-metadata@v2
+      
       - name: Añadir closes a la pr
         run: |
-          gh pr edit ${{ github.event.number }} --body "Close #${{ issue_id }}"
+          gh pr edit ${{ github.event.number }} --body "Close #${{ steps.issue.outputs.id }}"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}    
           
