@@ -1,0 +1,43 @@
+name: Crear calculadora
+on:
+  workflow_call:
+    inputs: 
+      valor1:
+        required: true
+        type: number
+      valor2:
+        required: true
+        type: number
+      operacion:
+        required: true
+        type: string
+
+jobs:
+  calcular:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Operaciones
+        run: |
+          resultado = 0
+          
+          if [[ "$github.event.inputs.operacion" == "+" ]]; then
+            resultado=$((github.event.inputs.valor1 + github.event.inputs.valor2))
+
+          if [[ "$github.event.inputs.operacion" == "-" ]]; then
+            resultado=$((github.event.inputs.valor1 - github.event.inputs.valor2))
+
+          if [[ "$github.event.inputs.operacion" == "/" ]]; then
+            resultado=$((github.event.inputs.valor1 / github.event.inputs.valor2))
+
+          if [[ "$github.event.inputs.operacion" == "*" ]]; then
+            resultado=$((github.event.inputs.valor1 * github.event.inputs.valor2))
+
+          echo $resultado
+            
+
+    
+    
+    
+   
+          
+    

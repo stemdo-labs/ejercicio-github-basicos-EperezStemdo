@@ -1,0 +1,29 @@
+name: Issue al abrir una pull request
+on:
+  pull_request:
+    types: 
+      - opened
+      - reopened
+
+jobs:
+  issue:
+    permissions:
+      issues: write
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: | 
+          pull_request_url="${{ github.event.pull_request.html_url }}"
+          issue_body="This issue is related to pull request: [${pull_request_url}](${pull_request_url})"
+          gh issue create --title "I found a bug" --body "${issue_body}" -a "EperezStemdo"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Añadir closes a la pr
+        run: |
+          gh pr edit ${{ github.event.number }} --body "Close #${{ issue_id }}"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}    
+          
+  
