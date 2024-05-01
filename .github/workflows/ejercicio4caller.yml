@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v4
       
       - name: Llamar a la calculadora
-        uses: ./ejercicio4.yml
+        uses: ./.github/workflows/ejercicio4.yml
         with:
           valor1: 1
           valor2: 2
