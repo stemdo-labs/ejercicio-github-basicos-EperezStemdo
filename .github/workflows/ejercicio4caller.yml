@@ -7,8 +7,10 @@ on:
 
 jobs:
   call_ejercicio4:
-   
-      
+     runs-on: ubuntu-latest
+     steps:
+      - uses: actions/checkout@v4
+
       - name: Llamar a la calculadora
         uses: ./.github/workflows/ejercicio4.yml
         with:
