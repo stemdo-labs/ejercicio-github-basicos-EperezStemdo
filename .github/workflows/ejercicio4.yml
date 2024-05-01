@@ -24,8 +24,8 @@ jobs:
             resultado=$((inputs.valor1 + inputs.valor2))
           fi
           
-          if [[ "$github.event.inputs.operacion" == "-" ]]; then
-            resultado=$((github.event.inputs.valor1 - github.event.inputs.valor2))
+          if [[ "$inputs.operacion" == "-" ]]; then
+            resultado=$((inputs.valor1 - inputs.valor2))
           fi
           
           if [[ "$github.event.inputs.operacion" == "/" ]]; then
