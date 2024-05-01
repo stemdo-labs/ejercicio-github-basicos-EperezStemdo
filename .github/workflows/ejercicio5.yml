@@ -13,7 +13,7 @@ jobs:
       - name: Iniciar Sesión en Azure
         run: az login #incia se sión utilizando los secretos de GitHub
         env:
-        #configurar secretos en el repositorio
+        #configurar secretos en el repositorio en Settings>Secrets
           AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
           AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
           AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
