@@ -1,4 +1,4 @@
-name: Issue al abrir una pull request
+name: Issue al abrir una pull requestw
 on:
   pull_request:
     types: 
