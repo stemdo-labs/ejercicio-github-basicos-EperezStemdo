@@ -20,7 +20,7 @@ jobs:
         run: |
           resultado=0
           
-          if [[ "$github.event.inputs.operacion" == "+" ]]; then
+          if [[ "$github.event.inputs.operacion" == '+' ]]; then
             resultado=$((github.event.inputs.valor1 + github.event.inputs.valor2))
           fi
           
