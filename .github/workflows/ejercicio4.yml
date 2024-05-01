@@ -23,7 +23,9 @@ jobs:
           if [[ "$inputs.operacion" == '+' ]]; then
             echo ${{ inputs.valor1 }} 
             echo ${{ inputs.valor2 }} 
+            echo $resultado
             resultado=$((inputs.valor1 + inputs.valor2))
+            echo $resultado
           fi
           
           if [[ "$inputs.operacion" == "-" ]]; then
