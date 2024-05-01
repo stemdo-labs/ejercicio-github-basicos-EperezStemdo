@@ -4,14 +4,17 @@ on:
   push:
     branches: 
       - '*'
-
 jobs:
-  call_ejercicio6:
-     runs-on: ubuntu-latest
-     steps:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
       - uses: actions/checkout@v4
 
-      - name: Llamar a la contruccion de la imagen
-        uses: ./.github/workflows/ejercicio6.yml
-        with:
-          tag: "1.0.0" 
+  call-reusable-workflow:
+    uses: ./.github/workflows/ejercicio6.yml
+    with:
+      tar: "1.0.0" 
+
+
+
