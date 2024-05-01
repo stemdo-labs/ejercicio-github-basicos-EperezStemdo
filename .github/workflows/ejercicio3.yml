@@ -20,9 +20,16 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
+      - name: Extract issue number
+        id: extract_issue_number
+        run: |
+          pr_url="${{ github.event.pull_request.html_url }}" #url de la pr
+          issue_number=$(echo "$pr_url" | grep -oE '[0-9]+$')
+          echo "::set-output name=id::$issue_number"
+      
       - name: Añadir closes a la pr
         run: |
-          gh pr edit ${{ github.event.number }} --body "Close #${{ issue_id }}"
+          gh pr edit ${{ github.event.number }} --body "Close #${{ steps.extract_issue_number.outputs.id }}"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}    
           
