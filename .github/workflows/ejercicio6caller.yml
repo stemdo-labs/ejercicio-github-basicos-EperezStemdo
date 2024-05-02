@@ -3,7 +3,7 @@ name: Crear imagen Docke
 on:
   push:
     branches: 
-      - '*'
+      - 'dev'
 permissions:
   packages: write
   contents: read
