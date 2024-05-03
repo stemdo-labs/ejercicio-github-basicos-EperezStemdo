@@ -27,10 +27,15 @@ jobs:
           issue_number=$(echo "$pr_url" | grep -oE '[0-9]+$')
           echo "::set-output name=id::$issue_number"
       
-      - name: Añadir closes a la pr
+      #- name: Añadir closes a la pr
+       # run: |
+        #  gh pr edit ${{ github.event.number }} --body "Close #${{ steps.extract_issue_number.outputs.id }}"
+        #env:
+         # GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}    
+
+      - name: Close issue
+        if: github.event_name == 'pull_request' && github.event.action == 'closed'
         run: |
-          gh pr edit ${{ github.event.number }} --body "Close #${{ steps.extract_issue_number.outputs.id }}"
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}    
+          gh issue close ${{ github.event.number }} --comment "Issue has been closed"
           
   
