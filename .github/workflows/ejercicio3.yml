@@ -5,14 +5,14 @@ on:
       - '*'
 
 jobs:
-  issue:
+  abririssue:
     permissions:
       issues: write
       pull-requests: write
     runs-on: ubuntu-latest
     
     outputs:
-      issue: ${{ steps.create_issue.outputs.issue_id }} 
+      output1: ${{ steps.create_issue.outputs.issue_id }} 
       
     steps:
       - name: Crear issue
@@ -24,10 +24,14 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Añadir Close a la pr
-        run: |
-          gh pr edit ${{ github.event.number }} --body "Close #${{ steps.outputs.issue_id }}"
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+  cerrarissue:
+      runs-on: ubuntu-latest
+      needs: abririssue
+      steps:
+        - name: Añadir close a la pr
+          run: |
+            gh pr edit ${{ github.event.number }} --body "Close #${{ needs.abririssue.outputs.output1 }}"
+          env:
+            GH_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
 
   
