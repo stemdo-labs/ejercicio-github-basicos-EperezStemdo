@@ -1,43 +1,30 @@
-name: Crear calculadora
+name: Calculadora
 on:
-  workflow_call:
-    inputs: 
-      valor1:
-        required: true
-        type: number
-      valor2:
-        required: true
-        type: number
+  workflow_dispatch:
+    inputs:
       operacion:
         required: true
         type: string
+      valor1:
+        required: true
+      valor2:
+        required: true
 
 jobs:
-  calcular:
+  calculadora:
     runs-on: ubuntu-latest
     steps:
-      - name: Operaciones
-        run: |
-          
-          if [[ "$inputs.operacion" == '+' ]]; then
-            resultado=$((inputs.valor1+inputs.valor2))
+      - run: |
+          if [ "${{ github.event.inputs.operacion }}" = "+" ]; then
+          resultado=$(("${{ github.event.inputs.valor1 }}" + "${{ github.event.inputs.valor2 }}"))
+          elif [ "${{ github.event.inputs.operacion }}" = "-" ]; then
+          resultado=$(("${{ github.event.inputs.valor1 }}" - "${{ github.event.inputs.valor2 }}"))
+          elif [ "${{ github.event.inputs.operacion }}" = "*" ]; then
+          resultado=$(("${{ github.event.inputs.valor1 }}" * "${{ github.event.inputs.valor2 }}"))
+          elif [ "${{ github.event.inputs.operacion }}" = "/" ]; then
+          resultado=$(("${{ github.event.inputs.valor1 }}" / "${{ github.event.inputs.valor2 }}"))          
           fi
-          
-          if [[ "$inputs.operacion" == "-" ]]; then
-            resultado=$((inputs.valor1-inputs.valor2))
-          fi
-          
-          if [[ "$github.event.inputs.operacion" == "/" ]]; then
-            resultado=$((github.event.inputs.valor1/github.event.inputs.valor2))
-          fi
-          
-          if [[ "$github.event.inputs.operacion" == "*" ]]; then
-            resultado=$((github.event.inputs.valor1*github.event.inputs.valor2))
-          fi
-          
           echo $resultado
-     
-    
     
     
    
