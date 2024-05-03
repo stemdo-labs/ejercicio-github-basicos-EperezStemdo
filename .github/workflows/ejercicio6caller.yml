@@ -1,0 +1,24 @@
+name: Crear imagen Docke 
+
+on:
+  push:
+    branches: 
+      - 'dev'
+permissions:
+  packages: write
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+  call-reusable-workflow:
+    uses: ./.github/workflows/ejercicio6.yml
+    with:
+      tag: "1.0.0" 
+
+
+
