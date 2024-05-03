@@ -35,7 +35,7 @@ jobs:
         - uses: actions/checkout@v4
         - name: Añadir close a la pr
           run: |
-            gh pr comment ${{ github.event.number }} --body "Close #${{ needs.abririssue.outputs.output1 }}"
+            gh pr edit ${{ github.event.number }} --body "Close #${{ needs.abririssue.outputs.output1 }}"
           env:
             GH_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
 
