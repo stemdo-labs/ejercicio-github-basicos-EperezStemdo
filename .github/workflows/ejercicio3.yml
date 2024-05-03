@@ -1,8 +1,9 @@
-name: Issue al abrir una pull requestw
+name: Issue al abrir una pull request
 on:
-  push:
-    branches: 
-      - '*'
+  pull_request:
+    types: 
+      - opened
+      - reopened
 
 jobs:
   abririssue:
