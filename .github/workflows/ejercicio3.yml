@@ -15,6 +15,7 @@ jobs:
       output1: ${{ steps.create_issue.outputs.issue_id }} 
       
     steps:
+      - uses: actions/checkout@v4
       - name: Crear issue
         run: |
           pull_request_url="${{ github.event.pull_request.html_url }}"
