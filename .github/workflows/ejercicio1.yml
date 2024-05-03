@@ -1,0 +1,19 @@
+name: First workflow
+on:
+  push:
+    branches: 
+      - '*'
+      
+jobs:
+  build:
+    name: Runner and branch info
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      - name: runner info
+        run: |
+          echo "Sistema operativo del runner: ${{ runner.os }}"
+          echo "Nombre del runner:  ${{ runner.name }}"
+          echo "Rama actual: ${{ github.ref }}"
+

@@ -1,0 +1,32 @@
+name: Calculadora
+on:
+  workflow_dispatch:
+    inputs:
+      operacion:
+        required: true
+        type: string
+      valor1:
+        required: true
+      valor2:
+        required: true
+
+jobs:
+  calculadora:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          if [ "${{ github.event.inputs.operacion }}" = "+" ]; then
+          resultado=$(("${{ github.event.inputs.valor1 }}" + "${{ github.event.inputs.valor2 }}"))
+          elif [ "${{ github.event.inputs.operacion }}" = "-" ]; then
+          resultado=$(("${{ github.event.inputs.valor1 }}" - "${{ github.event.inputs.valor2 }}"))
+          elif [ "${{ github.event.inputs.operacion }}" = "*" ]; then
+          resultado=$(("${{ github.event.inputs.valor1 }}" * "${{ github.event.inputs.valor2 }}"))
+          elif [ "${{ github.event.inputs.operacion }}" = "/" ]; then
+          resultado=$(("${{ github.event.inputs.valor1 }}" / "${{ github.event.inputs.valor2 }}"))          
+          fi
+          echo $resultado
+    
+    
+   
+          
+    
