@@ -26,7 +26,7 @@ jobs:
 
       - name: Añadir Close a la pr
         run: |
-          gh pr edit ${{ github.event.number }} --body "Close #${{ outputs.issue_id }}"
+          gh pr edit ${{ github.event.number }} --body "Close #${{ steps.outputs.issue_id }}"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
 
