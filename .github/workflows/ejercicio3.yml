@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          path: '.'
+          sparse-checkout: .
       
       - name: Crear issue
         run: |
